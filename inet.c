@@ -14,7 +14,25 @@
 */
 #include <sqlite3ext.h>
 SQLITE_EXTENSION_INIT1
+
+#ifdef _WIN32
+
+#include <winsock2.h>
+
+int inet_aton(
+    const char *zIn,
+    struct in_addr *sInAddr)
+{
+    sInAddr -> s_addr = inet_addr(zIn);
+    return sInAddr -> s_addr;
+}
+
+#else
+
 #include <arpa/inet.h>
+
+#endif
+
 #include <assert.h>
 #include <string.h>
 

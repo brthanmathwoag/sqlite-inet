@@ -1,11 +1,19 @@
 BIN = bin
 
-$(BIN)/inet.so: \
+ifeq ($(OS),Windows_NT)
+TARGET = inet.dll
+OS_FLAGS = -I . -lws2_32
+else
+TARGET = inet.so
+OS_FLAGS =
+endif
+
+
+$(BIN)/$(TARGET): \
 	$(BIN) \
-	inet.c \
+	inet.c
 
-	gcc -Wall -g -fPIC -shared inet.c -o $(BIN)/inet.so
-
+	gcc -Wall -g -fPIC -shared inet.c -o $(BIN)/$(TARGET) $(OS_FLAGS)
 
 $(BIN):
 	mkdir $(BIN)
@@ -14,6 +22,6 @@ clean:
 	rm -rf $(BIN)/*
 
 test: \
-	$(BIN)/inet.so
+	$(BIN)/$(TARGET)
 
 	./testsuite.sh

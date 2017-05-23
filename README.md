@@ -8,7 +8,7 @@ for converting IP adresses between their string and numeric representation.
 ```
 $ make
 $ sqlite3
-sqlite> .load bin/inet.so
+sqlite> .load bin/inet
 sqlite> select inet_ntoa(3232235777);
 192.168.1.1
 ```
@@ -17,8 +17,10 @@ If you don't want to compile code yourself you can download binaries from here:
 
 | Operating System                                                    | SHA256 |
 | ------------------------------------------------------------------- | ------ |
-| [Linux 64-bit](https://tznvy.eu/download/sqlite-inet/amd64/inet.so) | `4147cf5226184a5761cbe87d6a06bdf22289db57819069667cf46362c4e58fad` |
-| [Linux 32-bit](https://tznvy.eu/download/sqlite-inet/i386/inet.so)  | `5912909bb63640c80b08b83e53e36c672c6474be98d56922525bae57923b718f` |
+| [Linux 64-bit](https://tznvy.eu/download/sqlite-inet/sqlite-inet-lin-x64.zip) | `ae9b8a4a07504d79bfceacf1cb38ef38e4fa8668fac7e5331f6da8fcd91fc39c` |
+| [Linux 32-bit](https://tznvy.eu/download/sqlite-inet/sqlite-inet-lin-x86.zip)  | `d8ae7df0fbb184e158f6ba3bda50d491eef44967e7a875acd08a61bb550d5bf2` |
+| [Windows 64-bit](https://tznvy.eu/download/sqlite-inet/sqlite-inet-win-x64.zip) | `46f982a79863af825d03a7c47914f51cdc97d291a9ff5d7d55472bceca561d57` |
+| [Windows 32-bit](https://tznvy.eu/download/sqlite-inet/sqlite-inet-win-x86.zip) | `ca02baa64c6aaa7c20d8c18a79f499cc3732f2cffb4aab949b43bd7d2f4af2f6` |
 
 ## Misc
 
