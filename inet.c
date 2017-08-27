@@ -19,14 +19,6 @@ SQLITE_EXTENSION_INIT1
 
 #include <winsock2.h>
 
-int inet_aton(
-    const char *zIn,
-    struct in_addr *sInAddr)
-{
-    sInAddr -> s_addr = inet_addr(zIn);
-    return sInAddr -> s_addr;
-}
-
 #else
 
 #include <arpa/inet.h>
@@ -42,7 +34,7 @@ static void inet_aton_impl(
     sqlite3_value **argv)
 {
     const char *zIn;
-    struct in_addr sInAddr;
+    in_addr_t addr;
 
     assert(argc == 1);
     if (sqlite3_value_type(argv[0]) == SQLITE_NULL)
@@ -51,14 +43,15 @@ static void inet_aton_impl(
     }
 
     zIn = (const char*)sqlite3_value_text(argv[0]);
+    addr = inet_addr(zIn);
 
-    if (inet_aton(zIn, &sInAddr) == 0)
+    if (addr == INADDR_NONE)
     {
         sqlite3_result_error(context, "Passed a malformed IP address", -1);
         return;
     }
 
-    sqlite3_result_int(context, ntohl(sInAddr.s_addr));
+    sqlite3_result_int64(context, ntohl(addr));
 }
 
 static void inet_ntoa_impl(
