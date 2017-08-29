@@ -19,6 +19,22 @@ SQLITE_EXTENSION_INIT1
 
 #include <winsock2.h>
 
+int inet_aton(
+    const char *zIn,
+    struct in_addr *sInAddr)
+{
+    SOCKADDR_IN sock = { 0 };
+    int len = sizeof(sock);
+    int result = WSAStringToAddress(
+        (char*)zIn,
+        AF_INET,
+        NULL,
+        (LPSOCKADDR)&sock,
+        &len);
+    sInAddr -> s_addr = sock.sin_addr.S_un.S_addr;
+    return result == 0;
+}
+
 #else
 
 #include <arpa/inet.h>
@@ -34,7 +50,7 @@ static void inet_aton_impl(
     sqlite3_value **argv)
 {
     const char *zIn;
-    in_addr_t addr;
+    struct in_addr sInAddr;
 
     assert(argc == 1);
     if (sqlite3_value_type(argv[0]) == SQLITE_NULL)
@@ -43,15 +59,14 @@ static void inet_aton_impl(
     }
 
     zIn = (const char*)sqlite3_value_text(argv[0]);
-    addr = inet_addr(zIn);
 
-    if (addr == INADDR_NONE)
+    if (inet_aton(zIn, &sInAddr) == 0)
     {
         sqlite3_result_error(context, "Passed a malformed IP address", -1);
         return;
     }
 
-    sqlite3_result_int64(context, ntohl(addr));
+    sqlite3_result_int64(context, ntohl(sInAddr.s_addr));
 }
 
 static void inet_ntoa_impl(
@@ -114,6 +129,13 @@ int sqlite3_inet_init(
         inet_ntoa_impl,
         0,
         0);
+
+    #ifdef _WIN32
+
+    WSADATA wsaData;
+    rc = WSAStartup(MAKEWORD(2, 2), &wsaData);
+
+    #endif
 
     return rc;
 }
