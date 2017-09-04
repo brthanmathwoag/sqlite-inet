@@ -17,10 +17,10 @@ If you don't want to compile code yourself you can download binaries from here:
 
 | Operating System                                                    | SHA256 |
 | ------------------------------------------------------------------- | ------ |
-| [Linux 64-bit](https://tznvy.eu/download/sqlite-inet/sqlite-inet-lin-x64.zip) | `ae9b8a4a07504d79bfceacf1cb38ef38e4fa8668fac7e5331f6da8fcd91fc39c` |
-| [Linux 32-bit](https://tznvy.eu/download/sqlite-inet/sqlite-inet-lin-x86.zip)  | `d8ae7df0fbb184e158f6ba3bda50d491eef44967e7a875acd08a61bb550d5bf2` |
-| [Windows 64-bit](https://tznvy.eu/download/sqlite-inet/sqlite-inet-win-x64.zip) | `46f982a79863af825d03a7c47914f51cdc97d291a9ff5d7d55472bceca561d57` |
-| [Windows 32-bit](https://tznvy.eu/download/sqlite-inet/sqlite-inet-win-x86.zip) | `ca02baa64c6aaa7c20d8c18a79f499cc3732f2cffb4aab949b43bd7d2f4af2f6` |
+| [Linux 64-bit](https://tznvy.eu/download/sqlite-inet/sqlite-inet-lin-x64.zip) | `0fd7032dd132a26fa44b33777aba1cbd841cada2a3a91aaee9379da84d627cad` |
+| [Linux 32-bit](https://tznvy.eu/download/sqlite-inet/sqlite-inet-lin-x86.zip)  | `be1264f95b2d2229ed9250911022ec9f1be89d29919aebc65f72131954e9a946` |
+| [Windows 64-bit](https://tznvy.eu/download/sqlite-inet/sqlite-inet-win-x64.zip) | `74202c3c4f13b71c85657c7ed0066eddf82055157d27678d10b27a035c4b8235` |
+| [Windows 32-bit](https://tznvy.eu/download/sqlite-inet/sqlite-inet-win-x86.zip) | `5416b902d8c7aa66fdd6ce1619199371f4fabffbf23c047d967fe84fd5718bca` |
 
 ## Misc
 
