@@ -41,6 +41,24 @@ main() {
 
     if [ "$?" != "0" ]; then ANY_FAILED="1"; fi
 
+    testcase "inet_aton returns unsigned integers" \
+        "select inet_aton('192.168.1.1');" \
+        "3232235777"
+
+    if [ "$?" != "0" ]; then ANY_FAILED="1"; fi
+
+    testcase "inet_aton handles 0.0.0.0" \
+        "select inet_aton('0.0.0.0');" \
+        "0"
+
+    if [ "$?" != "0" ]; then ANY_FAILED="1"; fi
+
+    testcase "inet_aton handles 255.255.255.255" \
+        "select inet_aton('255.255.255.255');" \
+        "4294967295"
+
+    if [ "$?" != "0" ]; then ANY_FAILED="1"; fi
+
     return $ANY_FAILED
 }
 
